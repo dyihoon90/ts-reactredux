@@ -1,0 +1,16 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"search.useIgnoreFilesByDefault": true,
+	"tslint.configFile": "./tslint.json",
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"autoimport.doubleQuotes": true,
+	"autoimport.filesToScan": "**/{app,src,node_modules}/**/*.{ts,tsx}",
+	"javascript.validate.enable": false,
+	"react-native-tools": {
+		"projectRoot": "./mol-core-reactnative"
+	}
+}

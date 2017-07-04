@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "youtube-api-search": "github:andrew-w-ross/typings-youtube-api-search"
+  }
+}
