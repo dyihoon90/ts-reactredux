@@ -8,9 +8,11 @@ import VideoDetail from "./components/VideoDetail";
 import _ = require("lodash");
 const API_key: string = "AIzaSyCww7j5PfWCrPBfTPJokYxMaNAZitRglMw";
 
+export interface AppState { videos: YTSearch.IVideoResponse[], selectedVideo: YTSearch.IVideoResponse };
+
 class App extends React.Component<any, any> {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		// only use this.state = "something" in constructor. subsequently, must use this.setState
 		this.state = {
 			videos: [],
