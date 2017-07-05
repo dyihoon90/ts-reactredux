@@ -5,26 +5,34 @@ import { Hello } from "./components/Hello";
 import SearchBar from "./components/SearchBar";
 import VideoList from "./components/VideoList";
 import VideoDetail from "./components/VideoDetail";
+import _ = require("lodash");
 const API_key: string = "AIzaSyCww7j5PfWCrPBfTPJokYxMaNAZitRglMw";
 
 class App extends React.Component<any, any> {
 	constructor(props) {
 		super(props);
+		// only use this.state = "something" in constructor. subsequently, must use this.setState
 		this.state = {
 			videos: [],
 			selectedVideo: null,
 		};
-		YTSearch({ key: API_key, term: "surfboards" }, (videos: YTSearch.IVideoResponse[]) => {
+		this.videoSearch("twice");
+	}
+	videoSearch(term: string) {
+		YTSearch({ key: API_key, term }, (videos: YTSearch.IVideoResponse[]) => {
 			this.setState({
 				videos,
 				selectedVideo: videos[0],
 			});
 		})
+
 	}
 	render() {
+		// debounce returns a version of the function we passed in, that can only be called ever 300ms.
+		const videoSearch = _.debounce((term: string) => { this.videoSearch(term) }, 300);
 		return (
 			<div>
-				<SearchBar propName="test" />
+				<SearchBar onSearchTermChange={videoSearch} />
 				<VideoDetail video={this.state.selectedVideo} />
 				<VideoList
 					onVideoSelect={(selectedVideo: YTSearch.IVideoResponse) => this.setState({ selectedVideo })}
